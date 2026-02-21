@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SJTech Solutions | AI Energy Intelligence</title>
+
+    <!-- Theme Initialization Script -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
+    <!-- SEO JSON-LD Schemas -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "SJTech Solutions - EIIIS & EIIP",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Cloud, Mobile",
+      "description": "Proprietary AI & ML SaaS products for enterprise loss reduction, vigilance checking, and revenue enhancement for Electricity Distribution Utilities (DISCOMs).",
+      "provider": {
+        "@type": "Organization",
+        "name": "SJTECH SOLUTIONS PVT. LTD.",
+        "url": "https://sjtechsolution.com",
+        "logo": "https://sjtechsolution.com/assets/images/logo01.png",
+        "address": [
+          {
+            "@type": "PostalAddress",
+            "streetAddress": "158, Zone-I, M. P. Nagar",
+            "addressLocality": "Bhopal",
+            "addressRegion": "Madhya Pradesh",
+            "postalCode": "462011",
+            "addressCountry": "IN"
+          },
+          {
+            "@type": "PostalAddress",
+            "streetAddress": "5900 Balcones Drive STE 100",
+            "addressLocality": "Austin",
+            "addressRegion": "TX",
+            "postalCode": "78731",
+            "addressCountry": "US"
+          }
+        ]
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How does AI reduce AT&C losses in power grids?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI reduces AT&C losses by analyzing smart meter data in real-time, predicting localized energy theft, and identifying technical inefficiencies via Digital Twin simulations without requiring new hardware."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What is the EIIP corporate energy solution?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EIIP is an AI-driven SaaS platform that audits organizational energy usage in real-time, identifying wasteful patterns and providing actionable strategies to significantly reduce corporate utility billing."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Do I need to install new smart meters for EIIIS to work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Our architecture is hardware agnostic. It integrates flawlessly with legacy traditional meters, digital meters, AMR, and modern smart-metering infrastructures."
+        }
+      }]
+    }
+    </script>
+
+    <!-- SEO JSON-LD Schema: Articles / Knowledge Base -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "Article",
+          "position": 1,
+          "headline": "The 2026 Guide to Smart Home Energy Efficiency",
+          "description": "Details affordable upgrades like heat pumps, smart zoning, insulation, and LEDs to cut bills and emissions in 2026 homes connected to AI grids.",
+          "author": { "@type": "Organization", "name": "SJTech Solutions Intelligence" }
+        },
+        {
+          "@type": "Article",
+          "position": 2,
+          "headline": "Decarbonizing Enterprises: SaaS for Eco Footprint Reduction",
+          "description": "Explores how modern enterprises utilize AI-driven SaaS to automate energy management, track renewables, and lower carbon footprints by over 20%.",
+          "author": { "@type": "Organization", "name": "SJTech Solutions Intelligence" }
+        },
+        {
+          "@type": "Article",
+          "position": 3,
+          "headline": "Decoding the ESaaS Business Model for 2026",
+          "description": "An in-depth look at Energy Savings as a Service (ESaaS), enabling organizations to outsource efficiency measures and decarbonize with zero upfront capex.",
+          "author": { "@type": "Organization", "name": "SJTech Solutions Intelligence" }
+        },
+        {
+          "@type": "Article",
+          "position": 4,
+          "headline": "2026 Renewable Energy Outlook: Grid Stability & AI",
+          "description": "Analyzing 2026 trends, growth, and risks in renewable energy. Discover why AI-driven predictive modeling is crucial for fluctuating grid stability.",
+          "author": { "@type": "Organization", "name": "SJTech Solutions Intelligence" }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Google Fonts (Outfit for Headings, Inter for Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        google: {
+                            blue: '#1a73e8',
+                            bluelight: '#e8f0fe',
+                            red: '#ea4335',
+                            yellow: '#fbbc04',
+                            green: '#34a853',
+                            bg: '#f8f9fa',
+                            surface: '#ffffff',
+                            text: '#202124',
+                            textmuted: '#5f6368',
+                            border: '#dadce0',
+                            // Dark Mode specific Google colors
+                            darkbg: '#202124',
+                            darksurface: '#2d2e30',
+                            darktext: '#e8eaed',
+                            darkmuted: '#9aa0a6',
+                            darkborder: '#5f6368'
+                        }
+                    },
+                    boxShadow: {
+                        'google': '0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15)',
+                        'google-hover': '0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15)',
+                        'google-dark': '0 1px 2px 0 rgba(0,0,0,0.4), 0 1px 3px 1px rgba(0,0,0,0.3)',
+                        'google-hover-dark': '0 1px 3px 0 rgba(0,0,0,0.4), 0 4px 8px 3px rgba(0,0,0,0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Subtle Styles -->
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background-color: #c2e7ff; /* Google light blue selection */
+            color: #202124;
+        }
+
+        /* Smooth reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Native HTML Details/Summary styling */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary ~ * {
+            animation: sweep .3s ease-in-out;
+        }
+        @keyframes sweep {
+            0%    {opacity: 0; transform: translateY(-10px)}
+            100%  {opacity: 1; transform: translateY(0)}
+        }
+        
+        /* Modal Animation */
+        .modal-enter {
+            animation: modalFadeIn 0.3s ease-out forwards;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-google-darkbg text-google-text dark:text-google-darktext font-sans selection:bg-google-bluelight selection:text-google-blue transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-white/90 dark:bg-google-darkbg/90 backdrop-blur-md border-b border-transparent py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <img src="https://sjtechsolution.com/assets/images/logo01.png" alt="SJTech Solutions" class="h-8 md:h-10 w-auto object-contain">
+                </a>
+                
+                <!-- Desktop Links -->
+                <div class="hidden lg:flex space-x-8">
+                    <a href="#solutions" class="text-sm font-medium text-google-textmuted dark:text-google-darkmuted hover:text-google-blue transition-colors">Solutions</a>
+                    <a href="#technology" class="text-sm font-medium text-google-textmuted dark:text-google-darkmuted hover:text-google-blue transition-colors">Technology</a>
+                    <a href="#deployments" class="text-sm font-medium text-google-textmuted dark:text-google-darkmuted hover:text-google-blue transition-colors">Deployments</a>
+                    <a href="#intelligence" class="text-sm font-medium text-google-textmuted dark:text-google-darkmuted hover:text-google-blue transition-colors">Resources</a>
+                </div>
+
+                <!-- Action Button & Toggles -->
+                <div class="flex items-center gap-4">
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleTheme()" class="text-google-textmuted dark:text-google-darkmuted hover:text-google-blue hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-full transition-colors focus:outline-none">
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                    </button>
+
+                    <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium rounded-full bg-google-blue text-white hover:bg-blue-700 transition-colors shadow-sm hover:shadow-md">
+                        Contact Us
+                    </a>
+                    
+                    <button id="mobile-menu-btn" class="lg:hidden text-google-textmuted dark:text-google-darkmuted hover:text-google-text dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-full transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-[100] bg-white dark:bg-google-darkbg flex flex-col pt-20 px-6">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-google-textmuted dark:text-google-darkmuted p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        <div class="flex flex-col gap-6 text-2xl font-display font-medium text-google-text dark:text-white">
+            <a href="#solutions" class="mobile-link hover:text-google-blue transition-colors">Solutions</a>
+            <a href="#technology" class="mobile-link hover:text-google-blue transition-colors">Technology</a>
+            <a href="#deployments" class="mobile-link hover:text-google-blue transition-colors">Deployments</a>
+            <a href="#awards" class="mobile-link hover:text-google-blue transition-colors">Awards</a>
+            <a href="#intelligence" class="mobile-link hover:text-google-blue transition-colors">Resources</a>
+            <a href="#contact" class="mobile-link mt-4 inline-flex items-center justify-center px-6 py-3 text-lg font-medium rounded-full bg-google-blue text-white hover:bg-blue-700 transition-colors">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white dark:bg-google-darkbg transition-colors duration-300">
+        <!-- Subtle background shapes -->
+        <div class="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-[600px] h-[600px] bg-blue-50 dark:bg-blue-900/20 rounded-full blur-[80px] pointer-events-none opacity-60"></div>
+        <div class="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 w-[400px] h-[400px] bg-green-50 dark:bg-green-900/10 rounded-full blur-[80px] pointer-events-none opacity-60"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-google-bg dark:bg-google-darksurface border border-google-border dark:border-google-darkborder mb-8">
+                <span class="flex h-2 w-2 rounded-full bg-google-blue"></span>
+                <span class="text-sm font-medium text-google-textmuted dark:text-google-darkmuted">DIPP Certified Startup by Govt. of India</span>
+            </div>
+            
+            <h1 class="reveal font-display text-5xl md:text-7xl font-semibold tracking-tight text-google-text dark:text-white leading-[1.1] mb-6" style="transition-delay: 0.1s;">
+                Enterprise loss reduction. <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-google-blue via-indigo-500 to-google-red dark:from-blue-400 dark:via-indigo-400 dark:to-red-400">
+                    Powered by AI.
+                </span>
+            </h1>
+            
+            <p class="reveal text-lg md:text-xl text-google-textmuted dark:text-google-darkmuted max-w-2xl mx-auto mb-10 leading-relaxed font-sans" style="transition-delay: 0.2s;">
+                Proprietary SaaS solutions for DISCOMs and modern enterprises. Accurately identify irregularities, recover arrears, and drastically reduce power losses with zero new hardware.
+            </p>
+            
+            <div class="reveal flex flex-col sm:flex-row justify-center gap-4" style="transition-delay: 0.3s;">
+                <a href="#solutions" class="inline-flex items-center justify-center px-8 py-3.5 text-base font-medium rounded-full bg-google-blue text-white hover:bg-blue-700 hover:shadow-md transition-all">
+                    Explore EIIIS Platform
+                </a>
+                <a href="#deployments" class="inline-flex items-center justify-center px-8 py-3.5 text-base font-medium rounded-full bg-white dark:bg-google-darksurface text-google-blue dark:text-blue-400 border border-gray-200 dark:border-google-darkborder hover:bg-google-bluelight dark:hover:bg-gray-800 transition-all">
+                    View Case Studies
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By / Social Proof -->
+    <section class="py-10 bg-google-bg dark:bg-[#171717] border-y border-google-border dark:border-google-darkborder transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm font-medium text-google-textmuted dark:text-google-darkmuted mb-8">Recognized and Trusted By</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                <div class="flex items-center gap-2 text-google-textmuted dark:text-google-darkmuted hover:text-google-text dark:hover:text-white transition-colors"><i data-lucide="globe" class="w-6 h-6"></i><span class="font-display font-medium text-lg">Startup20 (G20)</span></div>
+                <div class="flex items-center gap-2 text-google-textmuted dark:text-google-darkmuted hover:text-google-text dark:hover:text-white transition-colors"><i data-lucide="building-2" class="w-6 h-6"></i><span class="font-display font-medium text-lg">Govt. of MP</span></div>
+                <div class="flex items-center gap-2 text-google-textmuted dark:text-google-darkmuted hover:text-google-text dark:hover:text-white transition-colors"><i data-lucide="award" class="w-6 h-6"></i><span class="font-display font-medium text-lg">NASSCOM T-AIM</span></div>
+                <div class="flex items-center gap-2 text-google-textmuted dark:text-google-darkmuted hover:text-google-text dark:hover:text-white transition-colors"><i data-lucide="zap" class="w-6 h-6"></i><span class="font-display font-medium text-lg">Powerthon-2022</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions -->
+    <section id="solutions" class="py-24 bg-white dark:bg-google-darkbg transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="font-display text-3xl md:text-4xl font-semibold text-google-text dark:text-white mb-4">Core Systems</h2>
+                <p class="text-google-textmuted dark:text-google-darkmuted text-lg">Bespoke SaaS platforms engineered from the ground up to solve the energy sector's most complex challenges.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- EIIIS Card -->
+                <div class="reveal bg-google-bg dark:bg-google-darksurface rounded-[2rem] p-8 md:p-12 hover:shadow-google dark:hover:shadow-google-hover-dark transition-shadow duration-300 border border-transparent hover:border-gray-200 dark:hover:border-google-darkborder">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-6 text-google-blue dark:text-blue-400">
+                        <i data-lucide="target" class="w-6 h-6"></i>
+                    </div>
+                    <div class="inline-block px-3 py-1 bg-white dark:bg-[#3c4043] border border-gray-200 dark:border-transparent rounded-full text-xs font-medium text-google-textmuted dark:text-gray-300 mb-4">Vigilance AI</div>
+                    <h3 class="font-display text-2xl font-semibold text-google-text dark:text-white mb-3">EIIIS Platform</h3>
+                    <p class="text-google-textmuted dark:text-google-darkmuted leading-relaxed mb-8">
+                        Enterprise AI engine tailored for DISCOMs. Accurately predicts grid irregularities, maps energy theft, and automates inspection routing to drastically reduce commercial losses and boost arrear recovery.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-sm text-google-text dark:text-gray-200"><i data-lucide="check" class="w-5 h-5 text-google-green dark:text-green-400"></i> Precise irregularity identification</li>
+                        <li class="flex items-center gap-3 text-sm text-google-text dark:text-gray-200"><i data-lucide="check" class="w-5 h-5 text-google-green dark:text-green-400"></i> Cloud-based Big Data processing</li>
+                        <li class="flex items-center gap-3 text-sm text-google-text dark:text-gray-200"><i data-lucide="check" class="w-5 h-5 text-google-green dark:text-green-400"></i> Digital Twin utility mapping</li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-google-blue dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 transition-colors group">
+                        Learn more about EIIIS <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- EIIP Card -->
+                <div class="reveal bg-google-bg dark:bg-google-darksurface rounded-[2rem] p-8 md:p-12 hover:shadow-google dark:hover:shadow-google-hover-dark transition-shadow duration-300 border border-transparent hover:border-gray-200 dark:hover:border-google-darkborder" style="transition-delay: 0.1s;">
+                    <div class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/20 flex items-center justify-center mb-6 text-google-green dark:text-green-400">
+                        <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                    </div>
+                    <div class="inline-block px-3 py-1 bg-white dark:bg-[#3c4043] border border-gray-200 dark:border-transparent rounded-full text-xs font-medium text-google-textmuted dark:text-gray-300 mb-4">Optimization AI</div>
+                    <h3 class="font-display text-2xl font-semibold text-google-text dark:text-white mb-3">EIIP Solution</h3>
+                    <p class="text-google-textmuted dark:text-google-darkmuted leading-relaxed mb-8">
+                        Corporate energy efficiency intelligence. Connects to organizational data to provide real-time insights, identifying wasteful usage patterns and generating strategies to massively reduce utility bills.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-sm text-google-text dark:text-gray-200"><i data-lucide="check" class="w-5 h-5 text-google-green dark:text-green-400"></i> Automated efficiency auditing</li>
+                        <li class="flex items-center gap-3 text-sm text-google-text dark:text-gray-200"><i data-lucide="check" class="w-5 h-5 text-google-green dark:text-green-400"></i> Real-time billing reduction logic</li>
+                        <li class="flex items-center gap-3 text-sm text-google-text dark:text-gray-200"><i data-lucide="check" class="w-5 h-5 text-google-green dark:text-green-400"></i> Designed for large-scale corps</li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-google-green dark:text-green-400 font-medium hover:text-green-700 dark:hover:text-green-300 transition-colors group">
+                        Learn more about EIIP <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture / Tech -->
+    <section id="technology" class="py-24 bg-white dark:bg-google-darkbg border-t border-gray-100 dark:border-google-darkborder transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h2 class="font-display text-3xl md:text-4xl font-semibold text-google-text dark:text-white mb-6">The Underlying Magic</h2>
+                    <p class="text-google-textmuted dark:text-google-darkmuted text-lg mb-10 leading-relaxed">
+                        We don't just provide software; we provide seamless integration. Our architecture is designed to overlay on your existing infrastructure, requiring zero new hardware investments.
+                    </p>
+                    <div class="space-y-8">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-google-red dark:text-red-400">
+                                    <i data-lucide="cpu" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-google-text dark:text-white mb-1">Hardware Agnostic</h4>
+                                <p class="text-google-textmuted dark:text-google-darkmuted text-sm leading-relaxed">Compatible with all meter types: traditional, digital, AMR, and smart-meters. No physical upgrades required.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-10 h-10 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center text-google-yellow dark:text-yellow-400">
+                                    <i data-lucide="database" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-google-text dark:text-white mb-1">Massive Data Scale</h4>
+                                <p class="text-google-textmuted dark:text-google-darkmuted text-sm leading-relaxed">Cloud architecture designed to ingest, clean, and process billions of metering data points securely.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-google-blue dark:text-blue-400">
+                                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-google-text dark:text-white mb-1">End-to-End Customization</h4>
+                                <p class="text-google-textmuted dark:text-google-darkmuted text-sm leading-relaxed">Standardized yet highly customizable to fit the specific operational procedures of any DISCOM.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal hidden lg:block" style="transition-delay: 0.2s;">
+                    <!-- Clean, Abstract Illustration -->
+                    <div class="aspect-square bg-google-bg dark:bg-google-darksurface rounded-[3rem] p-8 flex items-center justify-center relative overflow-hidden border border-gray-100 dark:border-google-darkborder">
+                        <!-- Abstract Data Nodes -->
+                        <div class="w-64 h-64 border border-gray-200 dark:border-gray-600 rounded-full absolute animate-[spin_40s_linear_infinite]"></div>
+                        <div class="w-48 h-48 border border-blue-100 dark:border-blue-800/50 rounded-full absolute animate-[spin_30s_linear_infinite_reverse]"></div>
+                        
+                        <div class="bg-white dark:bg-[#3c4043] p-6 rounded-full shadow-google dark:shadow-google-dark relative z-10">
+                            <i data-lucide="zap" class="w-12 h-12 text-google-blue dark:text-blue-400"></i>
+                        </div>
+                        
+                        <!-- Floating elements -->
+                        <div class="absolute top-1/4 left-1/4 w-4 h-4 bg-google-red dark:bg-red-400 rounded-full"></div>
+                        <div class="absolute bottom-1/3 right-1/4 w-6 h-6 bg-google-yellow dark:bg-yellow-400 rounded-full"></div>
+                        <div class="absolute top-1/3 right-1/3 w-3 h-3 bg-google-green dark:bg-green-400 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies / Deployments -->
+    <section id="deployments" class="py-24 bg-google-bg dark:bg-[#171717] border-t border-gray-200 dark:border-google-darkborder transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-3xl md:text-4xl font-semibold text-google-text dark:text-white mb-4">Proven at Scale</h2>
+                <p class="text-google-textmuted dark:text-google-darkmuted text-lg max-w-2xl mx-auto">Successfully deployed across massive governmental and utility infrastructures.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Deployment 1 -->
+                <div class="reveal bg-white dark:bg-google-darksurface rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-google-darkborder hover:shadow-google dark:hover:shadow-google-hover-dark transition-shadow">
+                    <div class="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-google-blue dark:text-blue-400 mb-6">
+                        <i data-lucide="zap" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-display text-xl font-medium text-google-text dark:text-white mb-1">MPMKVVCL Discom</h4>
+                    <p class="text-xs text-google-textmuted dark:text-google-darkmuted mb-4 uppercase tracking-wider font-medium">Govt. of Madhya Pradesh</p>
+                    <p class="text-google-textmuted dark:text-gray-300 text-sm leading-relaxed mb-6">
+                        Successfully executed EIIIS vigilance checking project for 2+ years. Deployed AI and Digital Twin tech resulting in massive grid loss reduction and operational efficiency.
+                    </p>
+                    <div class="pt-4 border-t border-gray-100 dark:border-gray-700 text-sm font-medium text-google-text dark:text-white">24+ Months Active</div>
+                </div>
+
+                <!-- Deployment 2 -->
+                <div class="reveal bg-white dark:bg-google-darksurface rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-google-darkborder hover:shadow-google dark:hover:shadow-google-hover-dark transition-shadow" style="transition-delay: 0.1s;">
+                    <div class="w-10 h-10 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-google-green dark:text-green-400 mb-6">
+                        <i data-lucide="clipboard-check" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-display text-xl font-medium text-google-text dark:text-white mb-1">FDA Inspection Sys</h4>
+                    <p class="text-xs text-google-textmuted dark:text-google-darkmuted mb-4 uppercase tracking-wider font-medium">Govt. of Madhya Pradesh</p>
+                    <p class="text-google-textmuted dark:text-gray-300 text-sm leading-relaxed mb-6">
+                        Developed a bespoke ERP for the Dept. of Food and Drugs. Facilitated highly structured, mobile app-based inspections at restaurants and sales points.
+                    </p>
+                    <div class="pt-4 border-t border-gray-100 dark:border-gray-700 text-sm font-medium text-google-text dark:text-white">1300+ Inspections Logged</div>
+                </div>
+
+                <!-- Deployment 3 -->
+                <div class="reveal bg-white dark:bg-google-darksurface rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-google-darkborder hover:shadow-google dark:hover:shadow-google-hover-dark transition-shadow" style="transition-delay: 0.2s;">
+                    <div class="w-10 h-10 rounded-full bg-yellow-50 dark:bg-yellow-900/20 flex items-center justify-center text-google-yellow dark:text-yellow-400 mb-6">
+                        <i data-lucide="truck" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-display text-xl font-medium text-google-text dark:text-white mb-1">Election Monitor</h4>
+                    <p class="text-xs text-google-textmuted dark:text-google-darkmuted mb-4 uppercase tracking-wider font-medium">Sehore Collectorate</p>
+                    <p class="text-google-textmuted dark:text-gray-300 text-sm leading-relaxed mb-6">
+                        Deployed a highly secure ERP to track massive logistical movement to and from voting booths during the Vidhan Sabha state elections.
+                    </p>
+                    <div class="pt-4 border-t border-gray-100 dark:border-gray-700 text-sm font-medium text-google-text dark:text-white">1205 Booths Tracked</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="py-24 bg-white dark:bg-google-darkbg transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 text-center reveal">
+                <h2 class="font-display text-3xl md:text-4xl font-semibold text-google-text dark:text-white mb-4">Recognitions & Awards</h2>
+                <p class="text-google-textmuted dark:text-google-darkmuted text-lg">Industry validation of our technology and impact.</p>
+            </div>
+
+            <!-- Top Highlights -->
+            <div class="grid md:grid-cols-2 gap-6 mb-12">
+                <div class="reveal bg-blue-50/50 dark:bg-blue-900/10 rounded-[2rem] p-8 border border-blue-100 dark:border-blue-900/30 flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
+                    <div class="w-16 h-16 rounded-full bg-white dark:bg-google-darksurface flex items-center justify-center text-google-blue dark:text-blue-400 shadow-sm shrink-0 border border-transparent dark:border-gray-600">
+                        <i data-lucide="globe-2" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-display text-xl font-medium text-google-text dark:text-white mb-2">Startup20 - India's G20 Presidency 2023</h4>
+                        <p class="text-google-textmuted dark:text-gray-300 text-sm leading-relaxed">Selected for Startup20 under India's G20 Presidency, representing global tech innovation and scale.</p>
+                    </div>
+                </div>
+                <div class="reveal bg-green-50/50 dark:bg-green-900/10 rounded-[2rem] p-8 border border-green-100 dark:border-green-900/30 flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left" style="transition-delay: 0.1s;">
+                    <div class="w-16 h-16 rounded-full bg-white dark:bg-google-darksurface flex items-center justify-center text-google-green dark:text-green-400 shadow-sm shrink-0 border border-transparent dark:border-gray-600">
+                        <i data-lucide="rocket" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-display text-xl font-medium text-google-text dark:text-white mb-2">Rev Up (T-AIM & NASSCOM)</h4>
+                        <p class="text-google-textmuted dark:text-gray-300 text-sm leading-relaxed">Selected among 62 exclusive AI startups for the acceleration program by Govt. of Telangana.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- List of Awards -->
+            <div class="reveal max-w-4xl mx-auto bg-white dark:bg-google-darksurface border border-gray-200 dark:border-google-darkborder rounded-2xl shadow-sm overflow-hidden">
+                <div class="px-6 py-4 bg-gray-50 dark:bg-[#3c4043] border-b border-gray-200 dark:border-google-darkborder flex items-center gap-2">
+                    <i data-lucide="award" class="w-5 h-5 text-google-textmuted dark:text-gray-300"></i>
+                    <span class="font-medium text-google-text dark:text-white text-sm">Industry Excellence</span>
+                </div>
+                <div class="divide-y divide-gray-100 dark:divide-gray-700">
+                    <div class="p-4 px-6 flex flex-col sm:flex-row sm:items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        <span class="text-google-text dark:text-gray-200 text-sm font-medium mb-1 sm:mb-0">Best AI-Based ERP Solutions Development Company - India</span>
+                        <span class="text-xs text-google-textmuted dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">2022</span>
+                    </div>
+                    <div class="p-4 px-6 flex flex-col sm:flex-row sm:items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        <span class="text-google-text dark:text-gray-200 text-sm font-medium mb-1 sm:mb-0">Governmental Software Specialists of the Year</span>
+                        <span class="text-xs text-google-textmuted dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">2022/2023</span>
+                    </div>
+                    <div class="p-4 px-6 flex flex-col sm:flex-row sm:items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        <span class="text-google-text dark:text-gray-200 text-sm font-medium mb-1 sm:mb-0">Best Governmental Software Systems Development Company</span>
+                        <span class="text-xs text-google-textmuted dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">2021</span>
+                    </div>
+                    <div class="p-4 px-6 flex flex-col sm:flex-row sm:items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        <span class="text-google-text dark:text-gray-200 text-sm font-medium mb-1 sm:mb-0">Best Complex Software Systems Development Company</span>
+                        <span class="text-xs text-google-textmuted dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">2021</span>
+                    </div>
+                    <div class="p-4 px-6 flex flex-col sm:flex-row sm:items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        <span class="text-google-text dark:text-gray-200 text-sm font-medium mb-1 sm:mb-0">Corporate Software Developer of the Year</span>
+                        <span class="text-xs text-google-textmuted dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">2020/21</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team -->
+    <section id="company" class="py-24 bg-google-bg dark:bg-[#171717] border-t border-gray-200 dark:border-google-darkborder transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-3xl md:text-4xl font-semibold text-google-text dark:text-white mb-4">Leadership</h2>
+                <p class="text-google-textmuted dark:text-google-darkmuted text-lg">The visionaries and domain experts driving enterprise innovation.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Profile 1 -->
+                <div class="reveal bg-white dark:bg-google-darksurface rounded-3xl p-8 border border-gray-100 dark:border-google-darkborder text-center hover:shadow-google dark:hover:shadow-google-hover-dark transition-shadow">
+                    <img src="https://sjtechsolution.com/assets/images/team/a1.jpeg" alt="Shashwat Joshi" class="w-32 h-32 rounded-full mx-auto object-cover object-top mb-6 shadow-sm border border-gray-100 dark:border-gray-700">
+                    <h3 class="font-display text-xl font-medium text-google-text dark:text-white mb-1">Shashwat Joshi</h3>
+                    <p class="text-google-blue dark:text-blue-400 text-sm font-medium mb-4">CEO, Founder</p>
+                    <p class="text-sm text-google-textmuted dark:text-gray-300 mb-6">B.S. Computer Science, Dean's merit list (UMD, USA - 2019). 7+ years Exp. in AI & Full Stack development.</p>
+                    <a href="https://www.linkedin.com/in/shashwat-joshi-a991a6b0/" target="_blank" rel="noopener noreferrer" class="inline-flex w-10 h-10 rounded-full bg-gray-50 dark:bg-gray-800 items-center justify-center text-gray-500 hover:text-google-blue hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                </div>
+
+                <!-- Profile 2 -->
+                <div class="reveal bg-white dark:bg-google-darksurface rounded-3xl p-8 border border-gray-100 dark:border-google-darkborder text-center hover:shadow-google dark:hover:shadow-google-hover-dark transition-shadow" style="transition-delay: 0.1s;">
+                    <img src="https://sjtechsolution.com/assets/images/team/a2.jpeg" alt="Himanshu Joshi" class="w-32 h-32 rounded-full mx-auto object-cover object-top mb-6 shadow-sm border border-gray-100 dark:border-gray-700">
+                    <h3 class="font-display text-xl font-medium text-google-text dark:text-white mb-1">Himanshu Joshi</h3>
+                    <p class="text-google-blue dark:text-blue-400 text-sm font-medium mb-4">Domain Lead, Founder</p>
+                    <p class="text-sm text-google-textmuted dark:text-gray-300 mb-6">B.E. Electrical (NIT Bhopal, India). 30+ years Exp. in Management, Business Dev & Data Analytics.</p>
+                    <a href="https://www.linkedin.com/in/himanshu-joshi-916029111/" target="_blank" rel="noopener noreferrer" class="inline-flex w-10 h-10 rounded-full bg-gray-50 dark:bg-gray-800 items-center justify-center text-gray-500 hover:text-google-blue hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                </div>
+
+                <!-- Profile 3 -->
+                <div class="reveal bg-white dark:bg-google-darksurface rounded-3xl p-8 border border-gray-100 dark:border-google-darkborder text-center hover:shadow-google dark:hover:shadow-google-hover-dark transition-shadow" style="transition-delay: 0.2s;">
+                    <img src="https://sjtechsolution.com/assets/images/team/a3.jpeg" alt="Pallavi Joshi" class="w-32 h-32 rounded-full mx-auto object-cover object-top mb-6 shadow-sm border border-gray-100 dark:border-gray-700">
+                    <h3 class="font-display text-xl font-medium text-google-text dark:text-white mb-1">Pallavi Joshi</h3>
+                    <p class="text-google-blue dark:text-blue-400 text-sm font-medium mb-4">Design Lead, Founder</p>
+                    <p class="text-sm text-google-textmuted dark:text-gray-300 mb-6">B.A. in Psychology (Mumbai Univ). 5+ years Exp. in software design, application testing, and HR.</p>
+                    <a href="https://www.linkedin.com/in/pallavi-joshi-727699282/" target="_blank" rel="noopener noreferrer" class="inline-flex w-10 h-10 rounded-full bg-gray-50 dark:bg-gray-800 items-center justify-center text-gray-500 hover:text-google-blue hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles / Resources (Original Content Hosted Internally) -->
+    <section id="intelligence" class="py-24 bg-white dark:bg-google-darkbg border-t border-gray-200 dark:border-google-darkborder transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 reveal flex justify-between items-end">
+                <div>
+                    <h2 class="font-display text-3xl md:text-4xl font-semibold text-google-text dark:text-white mb-2">Resources & Insights</h2>
+                    <p class="text-google-textmuted dark:text-google-darkmuted">The latest in energy intelligence and optimization.</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Article 1 -->
+                <div onclick="openArticleModal('art1')" class="cursor-pointer reveal group bg-white dark:bg-google-darksurface border border-gray-200 dark:border-google-darkborder rounded-2xl p-6 hover:shadow-google dark:hover:shadow-google-hover-dark transition-all">
+                    <div class="text-xs font-medium text-google-blue dark:text-blue-400 mb-3">Guide</div>
+                    <h4 class="font-display text-xl font-medium text-google-text dark:text-white mb-3 group-hover:text-google-blue dark:group-hover:text-blue-400 transition-colors">The 2026 Guide to Smart Home Energy Efficiency</h4>
+                    <p class="text-sm text-google-textmuted dark:text-gray-300 leading-relaxed mb-4">Details affordable upgrades like heat pumps, smart zoning, insulation, and LEDs to cut bills and emissions in 2026 homes.</p>
+                    <div class="text-sm font-medium text-google-blue dark:text-blue-400 flex items-center gap-1">Read article <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
+                </div>
+
+                <!-- Article 2 -->
+                <div onclick="openArticleModal('art2')" class="cursor-pointer reveal group bg-white dark:bg-google-darksurface border border-gray-200 dark:border-google-darkborder rounded-2xl p-6 hover:shadow-google dark:hover:shadow-google-hover-dark transition-all" style="transition-delay: 0.1s;">
+                    <div class="text-xs font-medium text-google-green dark:text-green-400 mb-3">Enterprise SaaS</div>
+                    <h4 class="font-display text-xl font-medium text-google-text dark:text-white mb-3 group-hover:text-google-blue dark:group-hover:text-blue-400 transition-colors">Decarbonizing Enterprises: SaaS for Footprint Reduction</h4>
+                    <p class="text-sm text-google-textmuted dark:text-gray-300 leading-relaxed mb-4">Explores 20+ ways SMEs use SaaS for energy management, remote work, and renewables tracking to lower carbon by 20%+.</p>
+                    <div class="text-sm font-medium text-google-blue dark:text-blue-400 flex items-center gap-1">Read article <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
+                </div>
+
+                <!-- Article 3 -->
+                <div onclick="openArticleModal('art3')" class="cursor-pointer reveal group bg-white dark:bg-google-darksurface border border-gray-200 dark:border-google-darkborder rounded-2xl p-6 hover:shadow-google dark:hover:shadow-google-hover-dark transition-all">
+                    <div class="text-xs font-medium text-google-yellow dark:text-yellow-500 mb-3">Business Model</div>
+                    <h4 class="font-display text-xl font-medium text-google-text dark:text-white mb-3 group-hover:text-google-blue dark:group-hover:text-blue-400 transition-colors">Decoding the ESaaS Business Model for 2026</h4>
+                    <p class="text-sm text-google-textmuted dark:text-gray-300 leading-relaxed mb-4">Explains Energy Savings as a Service, outsourcing efficiency measures without upfront costs for decarbonization.</p>
+                    <div class="text-sm font-medium text-google-blue dark:text-blue-400 flex items-center gap-1">Read article <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
+                </div>
+
+                <!-- Article 4 -->
+                <div onclick="openArticleModal('art4')" class="cursor-pointer reveal group bg-white dark:bg-google-darksurface border border-gray-200 dark:border-google-darkborder rounded-2xl p-6 hover:shadow-google dark:hover:shadow-google-hover-dark transition-all" style="transition-delay: 0.1s;">
+                    <div class="text-xs font-medium text-google-red dark:text-red-400 mb-3">Industry Outlook</div>
+                    <h4 class="font-display text-xl font-medium text-google-text dark:text-white mb-3 group-hover:text-google-blue dark:group-hover:text-blue-400 transition-colors">2026 Renewable Energy Outlook: Grid Stability & AI</h4>
+                    <p class="text-sm text-google-textmuted dark:text-gray-300 leading-relaxed mb-4">Analyzing future trends and risks in utility distributions, and why machine learning predictive models are the only solution.</p>
+                    <div class="text-sm font-medium text-google-blue dark:text-blue-400 flex items-center gap-1">Read article <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content Modal -->
+    <div id="article-modal" class="hidden fixed inset-0 z-[11000] bg-black/60 backdrop-blur-sm items-center justify-center p-4">
+        <div class="modal-enter bg-white dark:bg-google-darksurface w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 relative">
+            <div class="sticky top-0 bg-white/95 dark:bg-google-darksurface/95 backdrop-blur border-b border-gray-100 dark:border-gray-700 p-4 px-6 flex justify-between items-center z-10">
+                <span class="text-xs font-semibold text-google-blue dark:text-blue-400 tracking-wider uppercase" id="modal-category">Category</span>
+                <button onclick="closeArticleModal()" class="text-google-textmuted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-full transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="p-6 md:p-10">
+                <h2 id="modal-title" class="font-display text-3xl font-semibold text-google-text dark:text-white mb-6">Loading...</h2>
+                <div id="modal-body" class="prose prose-gray dark:prose-invert max-w-none text-google-textmuted dark:text-gray-300">
+                    <!-- Content injected via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Media (Videos) -->
+    <section id="media" class="py-24 bg-google-bg dark:bg-[#171717] border-y border-gray-200 dark:border-google-darkborder transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 text-center reveal">
+                <h2 class="font-display text-3xl md:text-4xl font-semibold text-google-text dark:text-white mb-2">Video Transmissions</h2>
+                <p class="text-google-textmuted dark:text-google-darkmuted">Visual intelligence and briefings</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Video 1 -->
+                <div class="reveal bg-white dark:bg-google-darksurface rounded-2xl border border-gray-100 dark:border-google-darkborder overflow-hidden hover:shadow-google dark:hover:shadow-google-hover-dark transition-shadow group cursor-pointer" onclick="window.open('https://www.youtube.com/watch?v=S0XoBy3qGYc', '_blank')">
+                    <div class="relative w-full pb-[56.25%] overflow-hidden bg-gray-100 dark:bg-gray-800">
+                        <div class="absolute inset-0 z-10 flex items-center justify-center bg-black/20 group-hover:bg-transparent transition-colors">
+                            <div class="w-12 h-12 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-google-red shadow-sm group-hover:scale-110 transition-transform">
+                                <i data-lucide="play" class="w-5 h-5 ml-1 fill-current"></i>
+                            </div>
+                        </div>
+                        <img src="https://img.youtube.com/vi/S0XoBy3qGYc/hqdefault.jpg" alt="ESaaS Overview" class="absolute top-0 left-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-medium text-google-text dark:text-white mb-1 group-hover:text-google-blue dark:group-hover:text-blue-400 transition-colors">ESaaS Overview</h4>
+                        <p class="text-xs text-google-textmuted dark:text-gray-400">Covers Energy Saving as a Service for efficiency gains.</p>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="reveal bg-white dark:bg-google-darksurface rounded-2xl border border-gray-100 dark:border-google-darkborder overflow-hidden hover:shadow-google dark:hover:shadow-google-hover-dark transition-shadow group cursor-pointer" style="transition-delay: 0.1s;" onclick="window.open('https://www.youtube.com/watch?v=UOoFYXQax68', '_blank')">
+                    <div class="relative w-full pb-[56.25%] overflow-hidden bg-gray-100 dark:bg-gray-800">
+                        <div class="absolute inset-0 z-10 flex items-center justify-center bg-black/20 group-hover:bg-transparent transition-colors">
+                            <div class="w-12 h-12 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-google-red shadow-sm group-hover:scale-110 transition-transform">
+                                <i data-lucide="play" class="w-5 h-5 ml-1 fill-current"></i>
+                            </div>
+                        </div>
+                        <img src="https://img.youtube.com/vi/UOoFYXQax68/hqdefault.jpg" alt="Efficiency Basics" class="absolute top-0 left-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-medium text-google-text dark:text-white mb-1 group-hover:text-google-blue dark:group-hover:text-blue-400 transition-colors">Efficiency Basics</h4>
+                        <p class="text-xs text-google-textmuted dark:text-gray-400">Explains conservation vs. efficiency to fight climate change.</p>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="reveal bg-white dark:bg-google-darksurface rounded-2xl border border-gray-100 dark:border-google-darkborder overflow-hidden hover:shadow-google dark:hover:shadow-google-hover-dark transition-shadow group cursor-pointer" style="transition-delay: 0.2s;" onclick="window.open('https://www.youtube.com/watch?v=lX7c8hCGD90', '_blank')">
+                    <div class="relative w-full pb-[56.25%] overflow-hidden bg-gray-100 dark:bg-gray-800">
+                        <div class="absolute inset-0 z-10 flex items-center justify-center bg-black/20 group-hover:bg-transparent transition-colors">
+                            <div class="w-12 h-12 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-google-red shadow-sm group-hover:scale-110 transition-transform">
+                                <i data-lucide="play" class="w-5 h-5 ml-1 fill-current"></i>
+                            </div>
+                        </div>
+                        <img src="https://img.youtube.com/vi/lX7c8hCGD90/hqdefault.jpg" alt="Conservation Priority" class="absolute top-0 left-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-medium text-google-text dark:text-white mb-1 group-hover:text-google-blue dark:group-hover:text-blue-400 transition-colors">Conservation Priority</h4>
+                        <p class="text-xs text-google-textmuted dark:text-gray-400">Highlights practical steps for enterprise energy savings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs -->
+    <section id="faq" class="py-24 bg-white dark:bg-google-darkbg border-b border-gray-200 dark:border-google-darkborder transition-colors duration-300">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-display text-3xl font-semibold text-google-text dark:text-white mb-8 text-center reveal">Frequently Asked Questions</h2>
+            
+            <div class="space-y-4 reveal">
+                <!-- FAQ 1 -->
+                <details class="group border border-gray-200 dark:border-gray-700 rounded-2xl bg-white dark:bg-google-darksurface open:shadow-sm transition-shadow">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer p-6 text-google-text dark:text-white select-none">
+                        How does AI reduce AT&C losses in power grids?
+                        <span class="transition group-open:rotate-180">
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 dark:text-gray-500"></i>
+                        </span>
+                    </summary>
+                    <div class="text-google-textmuted dark:text-gray-300 text-sm px-6 pb-6 leading-relaxed">
+                        AI reduces AT&C losses by analyzing smart meter data in real-time, predicting localized energy theft, and identifying technical inefficiencies via Digital Twin simulations without requiring new hardware.
+                    </div>
+                </details>
+
+                <!-- FAQ 2 -->
+                <details class="group border border-gray-200 dark:border-gray-700 rounded-2xl bg-white dark:bg-google-darksurface open:shadow-sm transition-shadow">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer p-6 text-google-text dark:text-white select-none">
+                        What is the EIIP corporate energy solution?
+                        <span class="transition group-open:rotate-180">
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 dark:text-gray-500"></i>
+                        </span>
+                    </summary>
+                    <div class="text-google-textmuted dark:text-gray-300 text-sm px-6 pb-6 leading-relaxed">
+                        EIIP is an AI-driven SaaS platform that audits organizational energy usage in real-time, identifying wasteful patterns and providing actionable strategies to significantly reduce corporate utility billing.
+                    </div>
+                </details>
+
+                <!-- FAQ 3 -->
+                <details class="group border border-gray-200 dark:border-gray-700 rounded-2xl bg-white dark:bg-google-darksurface open:shadow-sm transition-shadow">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer p-6 text-google-text dark:text-white select-none">
+                        Do I need to install new smart meters for EIIIS to work?
+                        <span class="transition group-open:rotate-180">
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 dark:text-gray-500"></i>
+                        </span>
+                    </summary>
+                    <div class="text-google-textmuted dark:text-gray-300 text-sm px-6 pb-6 leading-relaxed">
+                        No. Our architecture is hardware agnostic. It integrates flawlessly with legacy traditional meters, digital meters, AMR, and modern smart-metering infrastructures.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-google-bg dark:bg-[#171717] pt-16 pb-8 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-12 gap-12 mb-12">
+                <div class="md:col-span-5">
+                    <img src="https://sjtechsolution.com/assets/images/logo01.png" alt="SJTech Solutions" class="h-10 w-auto mb-6">
+                    <p class="text-google-textmuted dark:text-google-darkmuted text-sm leading-relaxed mb-6 pr-4">
+                        Proprietary Artificial Intelligence and Machine Learning software engineered for total enterprise loss reduction and autonomous revenue enhancement.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.linkedin.com/company/sjtech-solutions/posts/?feedView=all" target="_blank" rel="noopener noreferrer" class="w-10 h-10 border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#3c4043] flex items-center justify-center text-gray-500 dark:text-gray-300 hover:text-google-blue dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors rounded-full"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                        <a href="https://x.com/solutionssjtech" target="_blank" rel="noopener noreferrer" class="w-10 h-10 border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#3c4043] flex items-center justify-center text-gray-500 dark:text-gray-300 hover:text-google-blue dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors rounded-full"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                        <a href="https://www.facebook.com/people/SJTech-Solutions/100081212440089/#" target="_blank" rel="noopener noreferrer" class="w-10 h-10 border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#3c4043] flex items-center justify-center text-gray-500 dark:text-gray-300 hover:text-google-blue dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors rounded-full"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+
+                <div class="md:col-span-4">
+                    <h4 class="font-medium text-google-text dark:text-white mb-4">India Command</h4>
+                    <ul class="space-y-3 text-sm text-google-textmuted dark:text-gray-400">
+                        <li class="flex gap-3"><i data-lucide="map-pin" class="w-4 h-4 text-google-blue dark:text-blue-400 shrink-0 mt-0.5"></i> 158, Zone-I, M. P. Nagar<br>Bhopal, MP 462011</li>
+                        <li class="flex gap-3 items-center"><i data-lucide="phone" class="w-4 h-4 text-google-blue dark:text-blue-400 shrink-0"></i> +91 99772 75335</li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-3">
+                    <h4 class="font-medium text-google-text dark:text-white mb-4">US Relay</h4>
+                    <ul class="space-y-3 text-sm text-google-textmuted dark:text-gray-400">
+                        <li class="flex gap-3"><i data-lucide="map-pin" class="w-4 h-4 text-google-blue dark:text-blue-400 shrink-0 mt-0.5"></i> 5900 Balcones Dr STE 100<br>Austin, TX 78731</li>
+                        <li class="flex gap-3 items-center"><i data-lucide="mail" class="w-4 h-4 text-google-blue dark:text-blue-400 shrink-0"></i> info@sjtechsolution.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-200 dark:border-google-darkborder flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+                <p id="copyright-year">© SJTech Solutions Pvt. Ltd.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-google-blue dark:hover:text-blue-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-google-blue dark:hover:text-blue-400 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Init Lucide Icons
+        lucide.createIcons();
+        document.getElementById('copyright-year').innerHTML = `© ${new Date().getFullYear()} SJTech Solutions Pvt. Ltd. All rights reserved.`;
+
+        // Theme Toggle Logic
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.theme = isDark ? 'dark' : 'light';
+        }
+
+        // Original SEO Intelligence Content Database
+        const intelligenceData = {
+            art1: {
+                category: "Guide",
+                title: "The 2026 Guide to Smart Home Energy Efficiency",
+                content: `
+                    <p class="mb-4">As we navigate through 2026, household energy management is no longer about simply turning off lights. It’s about creating an integrated, AI-driven residential ecosystem.</p>
+                    <h3 class="text-google-text dark:text-white font-semibold mt-6 mb-3 text-xl">1. The Rise of Heat Pumps</h3>
+                    <p class="mb-4">Heat pumps have replaced traditional HVAC systems as the primary mechanism for residential climate control. By transferring heat rather than generating it, households are cutting heating costs by up to 50% while drastically reducing carbon emissions.</p>
+                    <h3 class="text-google-text dark:text-white font-semibold mt-6 mb-3 text-xl">2. AI-Driven Smart Zoning</h3>
+                    <p class="mb-4">Smart zoning utilizes machine learning to learn your living patterns. Systems now automatically restrict airflow to unoccupied rooms and precondition spaces based on predictable daily routines, interfacing directly with dynamic pricing models from local DISCOMs.</p>
+                    <h3 class="text-google-text dark:text-white font-semibold mt-6 mb-3 text-xl">3. The Utility Perspective</h3>
+                    <p>For energy distribution utilities, this shift is critical. Homes equipped with these technologies provide cleaner load profiles, which is why platforms like SJTech's EIIIS are essential to accurately map and predict distribution loads across smart-enabled neighborhoods.</p>
+                `
+            },
+            art2: {
+                category: "Enterprise SaaS",
+                title: "Decarbonizing Enterprises: SaaS for Footprint Reduction",
+                content: `
+                    <p class="mb-4">For large-scale organizations, hitting ESG (Environmental, Social, and Governance) targets is no longer optional. However, building internal infrastructure to track and reduce eco-footprints is highly inefficient.</p>
+                    <h3 class="text-google-text dark:text-white font-semibold mt-6 mb-3 text-xl">The SaaS Advantage</h3>
+                    <p class="mb-4">Enterprise AI SaaS solutions have revolutionized carbon tracking. Instead of manual audits, platforms integrate directly with existing metering hardware to provide real-time telemetry on energy waste, remote work impact, and renewable energy consumption.</p>
+                    <h3 class="text-google-text dark:text-white font-semibold mt-6 mb-3 text-xl">Automated Utility Optimization</h3>
+                    <p>By leveraging platforms like SJTech's EIIP (Enterprise Intelligent IoT Platform), SMEs and massive corporations alike can automatically identify parasitic power drains. On average, AI-driven insights result in a 20%+ reduction in overall carbon output and utility billing without requiring capital expenditure on new hardware.</p>
+                `
+            },
+            art3: {
+                category: "Business Model",
+                title: "Decoding the ESaaS Business Model for 2026",
+                content: `
+                    <p class="mb-4">Energy Savings as a Service (ESaaS) is rapidly becoming the standard operational model for corporate decarbonization in 2026.</p>
+                    <h3 class="text-google-text dark:text-white font-semibold mt-6 mb-3 text-xl">What is ESaaS?</h3>
+                    <p class="mb-4">Historically, upgrading a corporation's energy efficiency required massive upfront capital. ESaaS flips this paradigm. Providers implement efficiency measures—ranging from AI software integration to hardware retrofits—at zero upfront cost to the business.</p>
+                    <h3 class="text-google-text dark:text-white font-semibold mt-6 mb-3 text-xl">How the Model Works</h3>
+                    <p class="mb-4">The service provider earns revenue purely by taking a percentage of the guaranteed energy savings generated by their intervention. This perfectly aligns the incentives of the technology provider with the enterprise.</p>
+                    <p>Software platforms like EIIP act as the backbone for ESaaS, providing the irrefutable data analytics required to prove these savings to stakeholders and utility boards month over month.</p>
+                `
+            },
+            art4: {
+                category: "Industry Outlook",
+                title: "2026 Renewable Energy Outlook: Grid Stability & AI",
+                content: `
+                    <p class="mb-4">The global push towards renewable energy has accelerated, but integrating volatile energy sources like solar and wind into legacy power grids introduces unprecedented risks.</p>
+                    <h3 class="text-google-text dark:text-white font-semibold mt-6 mb-3 text-xl">The Threat of Grid Volatility</h3>
+                    <p class="mb-4">Traditional DISCOMs were built for stable, centralized power generation (coal, nuclear). The influx of decentralized, weather-dependent renewables creates immense load balancing challenges and increases the likelihood of catastrophic technical losses.</p>
+                    <h3 class="text-google-text dark:text-white font-semibold mt-6 mb-3 text-xl">The AI Imperative</h3>
+                    <p>To survive the 2026 renewable boom, DISCOMs must rely on AI predictive modeling. Machine learning architectures, such as SJTech's EIIIS, simulate massive grid networks via Digital Twins. By predicting anomalies, identifying points of failure, and routing automated inspections before load drops occur, AI ensures the grid remains stable even when the sun isn't shining.</p>
+                `
+            }
+        };
+
+        // Modal Control Logic
+        const articleModal = document.getElementById('article-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalCategory = document.getElementById('modal-category');
+        const modalBody = document.getElementById('modal-body');
+
+        window.openArticleModal = function(id) {
+            const data = intelligenceData[id];
+            if(data) {
+                modalCategory.innerText = data.category;
+                modalTitle.innerText = data.title;
+                modalBody.innerHTML = data.content;
+                articleModal.classList.remove('hidden');
+                articleModal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        window.closeArticleModal = function() {
+            articleModal.classList.add('hidden');
+            articleModal.classList.remove('flex');
+            document.body.style.overflow = '';
+        };
+
+        // Close modal on outside click
+        articleModal.addEventListener('click', (e) => {
+            if (e.target === articleModal) {
+                closeArticleModal();
+            }
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-sm', 'border-gray-100', 'dark:border-gray-800');
+                navbar.classList.remove('border-transparent');
+            } else {
+                navbar.classList.remove('shadow-sm', 'border-gray-100', 'dark:border-gray-800');
+                navbar.classList.add('border-transparent');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        const toggleMenu = () => {
+            if(mobileMenu.classList.contains('hidden')){
+                mobileMenu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        };
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', toggleMenu));
+
+        // Intersection Observer for smooth reveal on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Stop observing once revealed
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(node => {
+            observer.observe(node);
+        });
+    </script>
+</body>
+</html>
